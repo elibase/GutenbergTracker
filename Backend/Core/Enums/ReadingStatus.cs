@@ -2,8 +2,8 @@ namespace Core.Enums;
 
 public enum ReadingStatus
 {
-    WantToRead,
+    ToRead,
     Reading,
-    Paused,
-    Completed
+    Completed,
+    DNF
 }

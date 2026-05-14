@@ -11,15 +11,17 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configure EF Core
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Add Identity
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
 
+// Configure JWT Authentication
 var jwtKey = builder.Configuration["JWT:Key"];
-
 if (string.IsNullOrEmpty(jwtKey))
 {
     throw new InvalidOperationException("JWT Key is not configured.");
@@ -63,7 +65,5 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
-
-Console.WriteLine(builder.Configuration.GetConnectionString("DefaultConnection"));
 
 app.Run();

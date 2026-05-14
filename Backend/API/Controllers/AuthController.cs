@@ -36,7 +36,7 @@ public class AuthController : ControllerBase
         if (!result.Succeeded)
             return BadRequest(result.Errors);
 
-        return Ok("User created");
+        return Ok("User successfully registered.");
     }
 
     [HttpPost("login")]
