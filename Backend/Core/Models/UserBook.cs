@@ -7,13 +7,14 @@ public class UserBook
 {
     public int Id { get; set; }
     public required string UserId { get; set; }
-    public ApplicationUser? User { get; set; }
-    public int BookId { get; set; }
-    public Book? Book { get; set; }
+    public User? User { get; set; }
+    public int GutenbergBookId { get; set; }
+    public string Title { get; set; } = string.Empty;
+    public List<string> Authors { get; set; } = [];
+    public string CoverImageUrl { get; set; } = string.Empty;
     public ReadingStatus Status { get; set; }
-    public int? Rating { get; set; }
-    public string? Notes { get; set; }
     public DateTime? DateStarted { get; set; }
     public DateTime? DateCompleted { get; set; }
+    public DateTime DateLastRead { get; set; } = DateTime.UtcNow;
 }
 

@@ -12,10 +12,10 @@ namespace API.Controllers;
 [ApiController]
 public class AuthController : ControllerBase
 {
-    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly UserManager<User> _userManager;
     private readonly IConfiguration _configuration;
 
-    public AuthController(UserManager<ApplicationUser> userManager,
+    public AuthController(UserManager<User> userManager,
                           IConfiguration configuration)
     {
         _userManager = userManager;
@@ -25,7 +25,7 @@ public class AuthController : ControllerBase
     [HttpPost("register")]
     public async Task<IActionResult> Register(string email, string password)
     {
-        var user = new ApplicationUser
+        var user = new User
         {
             UserName = email,
             Email = email
@@ -52,7 +52,7 @@ public class AuthController : ControllerBase
         return Ok(new { token });
     }
 
-    private string GenerateJwtToken(ApplicationUser user)
+    private string GenerateJwtToken(User user)
     {
         var claims = new[]
         {
