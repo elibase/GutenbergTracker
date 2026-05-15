@@ -3,12 +3,13 @@ using Core.Models;
 
 namespace Core.Interfaces;
 
-public interface IUserBooksRepository
-{   
-    Task<ICollection<UserBook>> GetuserBooks(string userId);
-    Task<UserBook?> GerUserBookById(int id);
-    Task<UserBook> AddUserBook(UserBook userBook);
-    Task<UserBook?> UpdateUserBook(UserBook userBook);
-    Task<bool> DeleteUserBook(int id);
-    Task<bool> Exists(int id);
+public interface IUserBookRepository
+{
+    Task<IEnumerable<UserBook>> GetUserBooksAsync(int userId);
+    Task<UserBook?> GetByIdAsync(int id);
+    Task<UserBook?> GetUserBookAsync(int id, int gutenbergBookId);
+    Task AddAsync(UserBook userBook);
+    void Update(UserBook userBook);
+    void Delete(UserBook userBook);
+    Task SaveChangesAsync();
 }

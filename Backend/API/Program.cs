@@ -46,7 +46,6 @@ builder.Services.AddAuthentication(options =>
 });
 
 builder.Services.AddControllers();
-builder.Services.AddScoped<IUserBooksRepository, UserBooksRepository>();
 
 builder.Services.AddOpenApi();
 
