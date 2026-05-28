@@ -1,4 +1,8 @@
-export default function HomePage() {
+import "../app/globals.css";
+
+export default function HomePage({
+  
+}) {
   return (
     <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
       {/* NAVBAR */}
